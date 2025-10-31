@@ -1,9 +1,19 @@
+# .github/workflows/docker.yml
+
 name: Test Docker Build
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-build:
-runs-on: ubuntu-latest
-steps:
-- uses: actions/checkout@v3
-- name: Build Docker image
-run: docker build -t testimage 
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t testimage .
